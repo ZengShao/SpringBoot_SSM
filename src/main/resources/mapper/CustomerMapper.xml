@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.ssm.mapper.CustomerMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.ssm.model.Customer" >
+    <constructor >
+      <idArg column="customer_id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="customer_username" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="customer_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="customer_tel" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="customer_password" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="customer_salt" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="customer_level" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="customer_id_number" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="customer_address" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="customer_bank" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="customer_borrow_money" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="customer_periods" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="customer_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="customer_status" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="customer_bank_photo" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="customer_card_photo" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    customer_id, customer_username, customer_name, customer_tel, customer_password, customer_salt, 
+    customer_level, customer_id_number, customer_address, customer_bank, customer_borrow_money, 
+    customer_periods, customer_time, customer_status, customer_bank_photo, customer_card_photo
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_customer
+    where customer_id = #{customerId,jdbcType=BIGINT}
+  </select>
+
+  <select id="selectByList" resultMap="BaseResultMap" parameterType="com.zking.ssm.model.Customer" >
+    select
+    <include refid="Base_Column_List" />
+    from t_customer
+    where customer_name = #{customerName,jdbcType=BIGINT}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_customer
+    where customer_id = #{customerId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.zking.ssm.model.Customer" >
+    insert into t_customer (customer_id, customer_username, customer_name, 
+      customer_tel, customer_password, customer_salt, 
+      customer_level, customer_id_number, customer_address, 
+      customer_bank, customer_borrow_money, customer_periods, 
+      customer_time, customer_status, customer_bank_photo, 
+      customer_card_photo)
+    values (#{customerId,jdbcType=BIGINT}, #{customerUsername,jdbcType=VARCHAR}, #{customerName,jdbcType=VARCHAR}, 
+      #{customerTel,jdbcType=BIGINT}, #{customerPassword,jdbcType=VARCHAR}, #{customerSalt,jdbcType=VARCHAR}, 
+      #{customerLevel,jdbcType=INTEGER}, #{customerIdNumber,jdbcType=VARCHAR}, #{customerAddress,jdbcType=VARCHAR}, 
+      #{customerBank,jdbcType=VARCHAR}, #{customerBorrowMoney,jdbcType=VARCHAR}, #{customerPeriods,jdbcType=BIGINT}, 
+      #{customerTime,jdbcType=TIMESTAMP}, #{customerStatus,jdbcType=VARCHAR}, #{customerBankPhoto,jdbcType=VARCHAR}, 
+      #{customerCardPhoto,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.ssm.model.Customer" >
+    insert into t_customer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="customerId != null" >
+        customer_id,
+      </if>
+      <if test="customerUsername != null" >
+        customer_username,
+      </if>
+      <if test="customerName != null" >
+        customer_name,
+      </if>
+      <if test="customerTel != null" >
+        customer_tel,
+      </if>
+      <if test="customerPassword != null" >
+        customer_password,
+      </if>
+      <if test="customerSalt != null" >
+        customer_salt,
+      </if>
+      <if test="customerLevel != null" >
+        customer_level,
+      </if>
+      <if test="customerIdNumber != null" >
+        customer_id_number,
+      </if>
+      <if test="customerAddress != null" >
+        customer_address,
+      </if>
+      <if test="customerBank != null" >
+        customer_bank,
+      </if>
+      <if test="customerBorrowMoney != null" >
+        customer_borrow_money,
+      </if>
+      <if test="customerPeriods != null" >
+        customer_periods,
+      </if>
+      <if test="customerTime != null" >
+        customer_time,
+      </if>
+      <if test="customerStatus != null" >
+        customer_status,
+      </if>
+      <if test="customerBankPhoto != null" >
+        customer_bank_photo,
+      </if>
+      <if test="customerCardPhoto != null" >
+        customer_card_photo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="customerId != null" >
+        #{customerId,jdbcType=BIGINT},
+      </if>
+      <if test="customerUsername != null" >
+        #{customerUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null" >
+        #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerTel != null" >
+        #{customerTel,jdbcType=BIGINT},
+      </if>
+      <if test="customerPassword != null" >
+        #{customerPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="customerSalt != null" >
+        #{customerSalt,jdbcType=VARCHAR},
+      </if>
+      <if test="customerLevel != null" >
+        #{customerLevel,jdbcType=INTEGER},
+      </if>
+      <if test="customerIdNumber != null" >
+        #{customerIdNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="customerAddress != null" >
+        #{customerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="customerBank != null" >
+        #{customerBank,jdbcType=VARCHAR},
+      </if>
+      <if test="customerBorrowMoney != null" >
+        #{customerBorrowMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="customerPeriods != null" >
+        #{customerPeriods,jdbcType=BIGINT},
+      </if>
+      <if test="customerTime != null" >
+        #{customerTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="customerStatus != null" >
+        #{customerStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="customerBankPhoto != null" >
+        #{customerBankPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="customerCardPhoto != null" >
+        #{customerCardPhoto,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.ssm.model.Customer" >
+    update t_customer
+    <set >
+      <if test="customerUsername != null" >
+        customer_username = #{customerUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null" >
+        customer_name = #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerTel != null" >
+        customer_tel = #{customerTel,jdbcType=BIGINT},
+      </if>
+      <if test="customerPassword != null" >
+        customer_password = #{customerPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="customerSalt != null" >
+        customer_salt = #{customerSalt,jdbcType=VARCHAR},
+      </if>
+      <if test="customerLevel != null" >
+        customer_level = #{customerLevel,jdbcType=INTEGER},
+      </if>
+      <if test="customerIdNumber != null" >
+        customer_id_number = #{customerIdNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="customerAddress != null" >
+        customer_address = #{customerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="customerBank != null" >
+        customer_bank = #{customerBank,jdbcType=VARCHAR},
+      </if>
+      <if test="customerBorrowMoney != null" >
+        customer_borrow_money = #{customerBorrowMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="customerPeriods != null" >
+        customer_periods = #{customerPeriods,jdbcType=BIGINT},
+      </if>
+      <if test="customerTime != null" >
+        customer_time = #{customerTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="customerStatus != null" >
+        customer_status = #{customerStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="customerBankPhoto != null" >
+        customer_bank_photo = #{customerBankPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="customerCardPhoto != null" >
+        customer_card_photo = #{customerCardPhoto,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where customer_id = #{customerId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.ssm.model.Customer" >
+    update t_customer
+    set customer_username = #{customerUsername,jdbcType=VARCHAR},
+      customer_name = #{customerName,jdbcType=VARCHAR},
+      customer_tel = #{customerTel,jdbcType=BIGINT},
+      customer_password = #{customerPassword,jdbcType=VARCHAR},
+      customer_salt = #{customerSalt,jdbcType=VARCHAR},
+      customer_level = #{customerLevel,jdbcType=INTEGER},
+      customer_id_number = #{customerIdNumber,jdbcType=VARCHAR},
+      customer_address = #{customerAddress,jdbcType=VARCHAR},
+      customer_bank = #{customerBank,jdbcType=VARCHAR},
+      customer_borrow_money = #{customerBorrowMoney,jdbcType=VARCHAR},
+      customer_periods = #{customerPeriods,jdbcType=BIGINT},
+      customer_time = #{customerTime,jdbcType=TIMESTAMP},
+      customer_status = #{customerStatus,jdbcType=VARCHAR},
+      customer_bank_photo = #{customerBankPhoto,jdbcType=VARCHAR},
+      customer_card_photo = #{customerCardPhoto,jdbcType=VARCHAR}
+    where customer_id = #{customerId,jdbcType=BIGINT}
+  </update>
+</mapper>
