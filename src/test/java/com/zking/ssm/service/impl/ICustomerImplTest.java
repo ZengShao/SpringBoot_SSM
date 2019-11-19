@@ -11,9 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import java.awt.print.Book;
-
-import static org.junit.jupiter.api.Assertions.*;
+import javax.annotation.Resource;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -23,6 +21,9 @@ class ICustomerImplTest {
 
     @Autowired
     ICustomer iCustomer;
+
+    @Resource
+    private HttpAPIService httpAPIService;
 
     private Customer customer;
 
@@ -40,6 +41,19 @@ class ICustomerImplTest {
         customer.setCustomerId(2l);
         Customer del = iCustomer.load(customer);
         System.out.println(del);
+    }
+
+    @Test
+    void test() {
+        String str = null;
+        for (int i = 0; i < 2; i++){
+            try {
+                str = httpAPIService.doGet("http://www.baidu.com");
+            } catch (Throwable e) {
+                System.out.println(e.getMessage());
+            }
+            System.out.println(i+"; "+str);
+        }
     }
 
 }

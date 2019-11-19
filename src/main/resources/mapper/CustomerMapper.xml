@@ -37,7 +37,7 @@
     select
     <include refid="Base_Column_List" />
     from t_customer
-    where customer_name = #{customerName,jdbcType=BIGINT}
+    where customer_name like concat('%',#{customerName,jdbcType=VARCHAR},'%')
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
