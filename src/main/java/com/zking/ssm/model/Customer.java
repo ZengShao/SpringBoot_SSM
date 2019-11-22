@@ -1,8 +1,9 @@
 package com.zking.ssm.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Customer {
+public class Customer implements Serializable {
     private Long customerId;
 
     private String customerUsername;
@@ -184,5 +185,66 @@ public class Customer {
 
     public void setCustomerCardPhoto(String customerCardPhoto) {
         this.customerCardPhoto = customerCardPhoto;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Customer customer = (Customer) o;
+
+        if (customerId != null ? !customerId.equals(customer.customerId) : customer.customerId != null) return false;
+        if (customerUsername != null ? !customerUsername.equals(customer.customerUsername) : customer.customerUsername != null)
+            return false;
+        if (customerName != null ? !customerName.equals(customer.customerName) : customer.customerName != null)
+            return false;
+        if (customerTel != null ? !customerTel.equals(customer.customerTel) : customer.customerTel != null)
+            return false;
+        if (customerPassword != null ? !customerPassword.equals(customer.customerPassword) : customer.customerPassword != null)
+            return false;
+        if (customerSalt != null ? !customerSalt.equals(customer.customerSalt) : customer.customerSalt != null)
+            return false;
+        if (customerLevel != null ? !customerLevel.equals(customer.customerLevel) : customer.customerLevel != null)
+            return false;
+        if (customerIdNumber != null ? !customerIdNumber.equals(customer.customerIdNumber) : customer.customerIdNumber != null)
+            return false;
+        if (customerAddress != null ? !customerAddress.equals(customer.customerAddress) : customer.customerAddress != null)
+            return false;
+        if (customerBank != null ? !customerBank.equals(customer.customerBank) : customer.customerBank != null)
+            return false;
+        if (customerBorrowMoney != null ? !customerBorrowMoney.equals(customer.customerBorrowMoney) : customer.customerBorrowMoney != null)
+            return false;
+        if (customerPeriods != null ? !customerPeriods.equals(customer.customerPeriods) : customer.customerPeriods != null)
+            return false;
+        if (customerTime != null ? !customerTime.equals(customer.customerTime) : customer.customerTime != null)
+            return false;
+        if (customerStatus != null ? !customerStatus.equals(customer.customerStatus) : customer.customerStatus != null)
+            return false;
+        if (customerBankPhoto != null ? !customerBankPhoto.equals(customer.customerBankPhoto) : customer.customerBankPhoto != null)
+            return false;
+        return customerCardPhoto != null ? customerCardPhoto.equals(customer.customerCardPhoto) : customer.customerCardPhoto == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = customerId != null ? customerId.hashCode() : 0;
+        result = 31 * result + (customerUsername != null ? customerUsername.hashCode() : 0);
+        result = 31 * result + (customerName != null ? customerName.hashCode() : 0);
+        result = 31 * result + (customerTel != null ? customerTel.hashCode() : 0);
+        result = 31 * result + (customerPassword != null ? customerPassword.hashCode() : 0);
+        result = 31 * result + (customerSalt != null ? customerSalt.hashCode() : 0);
+        result = 31 * result + (customerLevel != null ? customerLevel.hashCode() : 0);
+        result = 31 * result + (customerIdNumber != null ? customerIdNumber.hashCode() : 0);
+        result = 31 * result + (customerAddress != null ? customerAddress.hashCode() : 0);
+        result = 31 * result + (customerBank != null ? customerBank.hashCode() : 0);
+        result = 31 * result + (customerBorrowMoney != null ? customerBorrowMoney.hashCode() : 0);
+        result = 31 * result + (customerPeriods != null ? customerPeriods.hashCode() : 0);
+        result = 31 * result + (customerTime != null ? customerTime.hashCode() : 0);
+        result = 31 * result + (customerStatus != null ? customerStatus.hashCode() : 0);
+        result = 31 * result + (customerBankPhoto != null ? customerBankPhoto.hashCode() : 0);
+        result = 31 * result + (customerCardPhoto != null ? customerCardPhoto.hashCode() : 0);
+        return result;
     }
 }

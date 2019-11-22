@@ -18,8 +18,6 @@ import java.util.List;
 @RequestMapping("/Customer")
 public class CustomerController {
 
-    @Autowired
-    private RedisTemplate<String,Object> redisTemplate;
 
     @Autowired
     ICustomer iCustomer;
@@ -61,7 +59,6 @@ public class CustomerController {
         jsonData.setPage(pageBean.getPage());
         jsonData.setResult(objects);
 
-        redisTemplate.opsForValue().set("www",jsonData);
 
         return jsonData;
     }

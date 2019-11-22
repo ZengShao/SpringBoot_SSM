@@ -44,6 +44,28 @@ class ICustomerImplTest {
     }
 
     @Test
+    void add() {
+        customer.setCustomerName("测试");
+
+        customer = iCustomer.add(customer);
+    }
+
+    @Test
+    void del() {
+        customer.setCustomerId(16l);
+
+       iCustomer.del(customer);
+    }
+
+    @Test
+    void update() {
+        customer.setCustomerId(2l);
+        customer.setCustomerName("s");
+
+        customer = iCustomer.update(customer);
+    }
+
+    @Test
     void test() {
         String str = null;
         for (int i = 0; i < 2; i++){

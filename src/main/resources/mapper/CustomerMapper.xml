@@ -44,7 +44,7 @@
     delete from t_customer
     where customer_id = #{customerId,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.zking.ssm.model.Customer" >
+  <insert id="insert" parameterType="com.zking.ssm.model.Customer" useGeneratedKeys="true" keyProperty="customerId" >
     insert into t_customer (customer_id, customer_username, customer_name, 
       customer_tel, customer_password, customer_salt, 
       customer_level, customer_id_number, customer_address, 
@@ -58,7 +58,7 @@
       #{customerTime,jdbcType=TIMESTAMP}, #{customerStatus,jdbcType=VARCHAR}, #{customerBankPhoto,jdbcType=VARCHAR}, 
       #{customerCardPhoto,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.zking.ssm.model.Customer" >
+  <insert id="insertSelective" parameterType="com.zking.ssm.model.Customer">
     insert into t_customer
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="customerId != null" >
@@ -161,7 +161,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.zking.ssm.model.Customer" >
+  <update id="updateByPrimaryKeySelective"  parameterType="com.zking.ssm.model.Customer" >
     update t_customer
     <set >
       <if test="customerUsername != null" >
@@ -212,7 +212,7 @@
     </set>
     where customer_id = #{customerId,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.zking.ssm.model.Customer" >
+  <update id="updateByPrimaryKey" parameterType="com.zking.ssm.model.Customer" useGeneratedKeys="true" keyProperty="customerId" >
     update t_customer
     set customer_username = #{customerUsername,jdbcType=VARCHAR},
       customer_name = #{customerName,jdbcType=VARCHAR},

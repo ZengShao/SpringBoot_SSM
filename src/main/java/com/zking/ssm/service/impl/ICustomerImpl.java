@@ -7,6 +7,8 @@ import com.zking.ssm.model.Customer;
 import com.zking.ssm.service.ICustomer;
 import com.zking.ssm.util.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.awt.print.Book;
@@ -17,6 +19,22 @@ public class ICustomerImpl implements ICustomer {
 
     @Autowired
     CustomerMapper customerMapper;
+
+    @Override
+    public Customer add(Customer customer) {
+        customerMapper.insert(customer);
+        return customer;
+    }
+    @Override
+    public Customer update(Customer customer) {
+        customerMapper.updateByPrimaryKey(customer);
+        return customer;
+    }
+
+    @Override
+    public int del(Customer customer) {
+        return customerMapper.deleteByPrimaryKey(customer.getCustomerId());
+    }
 
     @Override
     public Customer load(Customer customer) {
