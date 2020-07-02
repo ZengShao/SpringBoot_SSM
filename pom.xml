@@ -15,7 +15,7 @@
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
-		<mysql.driver.version>5.1.35</mysql.driver.version>
+		<mysql.driver.version>8.0.16</mysql.driver.version>
 		<java.version>1.8</java.version>
 		<junit.version>4.12</junit.version>
 	</properties>
@@ -42,7 +42,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.35</version>
+			<version>8.0.16</version>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
